@@ -50,7 +50,9 @@ london_co = {
         "routing": True,
     },
 }
-tupe_hard = input('Введите имя устройства: ')
-param_list = ', '.join(list(london_co[tupe_hard].keys()))
-param_hard = input(f'Введите имя параметра ({param_list}): ')
-print(london_co[tupe_hard][param_hard])
+
+device = input("Введите имя устройства: ")
+params = ", ".join(london_co[device].keys())
+parameter = input(f"Введите имя параметра ({params}): ")
+
+print(london_co[device][parameter])

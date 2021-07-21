@@ -46,5 +46,7 @@ london_co = {
         "routing": True,
     },
 }
-tupe_hard = input('Введите имя устройства: ')
-print(london_co[tupe_hard])
+
+device = input("Введите имя устройства: ")
+
+print(london_co[device])

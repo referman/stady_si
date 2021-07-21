@@ -43,3 +43,11 @@ london_co = {
         "routing": True,
     },
 }
+tupe_hard = input('Введите имя устройства: ')
+param_list = ', '.join(list(london_co[tupe_hard].keys()))
+param_hard = input(f'Введите имя параметра ({param_list}): ')
+param_hard = param_hard.lower()
+try:
+    print(london_co[tupe_hard][param_hard])
+except:
+    print('Такого параметра нет')
