@@ -19,17 +19,16 @@
 """
 
 ip_adress = input("Введите IP-адрес в формате 10.0.1.1: ")
+ip_chek = ''
 for i in ip_adress:
    if i.isdigit():
-      continue
+      ip_chek += i
    elif i == '.':
-      continue
+      ip_chek += i
    else:
-      print('Это не точка и не число')
-
-
-
-
+      raise ValueError('Неправильный IP-адрес')
+print(ip_chek)
+         
 
 
 
