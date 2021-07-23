@@ -14,3 +14,12 @@ Outbound Interface    FastEthernet0/0
 Ограничение: Все задания надо выполнять используя только пройденные темы.
 
 """
+result = {}
+with open('ospf.txt') as f:
+    for i in f:
+        i = i.split()
+        print(i)
+        for a in i:
+            result['Prefix'] = a
+
+print(result)
