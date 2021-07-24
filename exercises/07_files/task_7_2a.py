@@ -18,7 +18,21 @@
 
 ignore = ["duplex", "alias", "configuration"]
 
+result = []
+with open('config_sw1.txt') as f:
+    for i in f:
+        result.append(i.strip('\n').split(' '))
+for i in result:
+    if set(i) & set(ignore):
+        continue
+    elif i[0] == '!':
+        continue
+    else:
+        print(' '.join(i))
 
+
+
+'''
 result = []
 with open('config_sw1.txt') as f:
     for i in f:
@@ -36,5 +50,6 @@ for i in result2:
     except:
         pass
 print('end')
+'''
 
 #Можно было решить этот пример с использованием set() но я уже так делать не стал
