@@ -31,7 +31,7 @@ for i in result:
         print(' '.join(i))
 
 
-
+#Или этот альтернативный метод
 '''
 result = []
 with open('config_sw1.txt') as f:
@@ -52,4 +52,3 @@ for i in result2:
 print('end')
 '''
 
-#Можно было решить этот пример с использованием set() но я уже так делать не стал
