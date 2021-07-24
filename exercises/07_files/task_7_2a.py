@@ -18,6 +18,19 @@
 
 ignore = ["duplex", "alias", "configuration"]
 
+with open('config_sw1.txt') as f:
+    result = [i.strip('\n').split(' ') for i in f]
+    for i in result:
+        if set(i) & set(ignore):
+            continue
+        elif i[0] == '!':
+            continue
+        else:
+            print(' '.join(i))
+
+
+#Или этот альтернативный метод
+'''
 result = []
 with open('config_sw1.txt') as f:
     for i in f:
@@ -29,7 +42,7 @@ for i in result:
         continue
     else:
         print(' '.join(i))
-
+'''
 
 #Или этот альтернативный метод
 '''
