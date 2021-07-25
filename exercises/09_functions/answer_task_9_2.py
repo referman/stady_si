@@ -63,14 +63,13 @@ trunk_config_2 = {
 
 
 def generate_trunk_config(intf_vlan_mapping, trunk_template):
-    spisok = []
-    for a, b in intf_vlan_mapping.items():
-        spisok.append(f'interface {a}')
-        for i in trunk_template:
-            if i.endswith('vlan'):
-                spisok.append('{} {}'.format(i, ','.join(str(f) for f in b)))
+    trunk_conf = []
+    for port, vlans in intf_vlan_mapping.items():
+        trunk_conf.append(f"interface {port}")
+        for command in trunk_template:
+            if command.endswith("allowed vlan"):
+                vlans_str = ",".join([str(vl) for vl in vlans])
+                trunk_conf.append(f"{command} {vlans_str}")
             else:
-                spisok.append(i)
-    return spisok
-
-print(generate_trunk_config(trunk_config, trunk_mode_template))
+                trunk_conf.append(command)
+    return trunk_conf
