@@ -24,28 +24,10 @@
 
 """
 import re
-def get_ip_from_cfg(file):
-    regular = (r'ip address (\S+) (\S+)')
-    with open(file) as f:
-        spisok = [i.groups() for i in re.finditer(regular, f.read())]
-
-    return spisok
 
 
-
-#Мой вариант:
-'''
-def get_ip_from_cfg(file):
-    ip_adress = (r'ip address')
-    regular = (r'(\d+\.\d+\.\d+\.\d+) +(\d+\.\d+\.\d+\.\d+)')
-    spisok = []
-    with open(file) as f:
-        for i in f:
-            if ip_adress in i:
-                match = re.findall(regular, i)
-                if match:
-                    spisok += tuple(match)
-    return print(spisok)
-
-get_ip_from_cfg('config_r1.txt')
-'''
+def get_ip_from_cfg(config):
+    regex = r"ip address (\S+) (\S+)"
+    with open(config) as f:
+        result = [m.groups() for m in re.finditer(regex, f.read())]
+    return result
