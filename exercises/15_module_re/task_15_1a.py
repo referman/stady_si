@@ -24,3 +24,32 @@
 а не ввод пользователя.
 
 """
+import re
+def get_ip_from_cfg(file):
+    spisok = []
+    with open(file) as f:
+        asl = f.read()
+        spisok = re.split(r'[!\n]+', asl)
+        yet = ('interface', ' ip address')
+        spisok_1 = [i for i in spisok if i.startswith(yet)]
+        #spisok_1 = ' '.join(spisok_1    )
+        #regular = (r'(interface \S+).*(ip address (\S+) (\S+))')
+        slovar = {}
+        aaa = len(spisok_1)
+        print(aaa)
+        for i in range(10):
+            i = 0
+            slovar[spisok_1[i]] = spisok_1[i+1]
+            i += 2
+        print(slovar)
+
+
+
+    #regular = (r'(interface \S+)'r'(ip address \S+ \S+)')
+    #with open(file) as f:
+     #   match = re.findall(regular, f.read(), re.DOTALL)
+        #match = {i.group(1): i.group(2) for i in re.finditer(regular, f.read(), re.DOTALL)}
+#    print(match)
+
+
+get_ip_from_cfg('config_r1.txt')
