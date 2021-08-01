@@ -39,7 +39,6 @@ def write_dhcp_snooping_to_csv(filenames):
         read = f.read()
         text = [i for i in re.split('\n', read)][2:-1]
         text_2 = [i.strip().split() for i in text]
-    
     print(text_2)
 
 write_dhcp_snooping_to_csv('sw1_dhcp_snooping.txt')
