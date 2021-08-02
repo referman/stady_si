@@ -32,13 +32,19 @@ sw2_dhcp_snooping.txt, sw3_dhcp_snooping.txt.
 
 """
 import re
-def write_dhcp_snooping_to_csv(filenames):
-    name = filenames.split('_')[0]
-    header = 'switch,mac,ip,vlan,interface'
+import csv
+def write_dhcp_snooping_to_csv(filenames, output):
+    name = filenames[0:3]
+    header = ('switch','mac','ip','vlan','interface')
     with open(filenames) as f:
         read = f.read()
-        text = [i for i in re.split('\n', read)][2:-1]
+        text = [i for i in re.split('\n', read)][2:-2]
         text_2 = [i.strip().split() for i in text]
-    print(text_2)
+    with open(output, 'w') as f:
+        writer = csv.writer(f)
+        writer.writerow(header)
+        for i in text_2:
+            row = name, i[0], i[1], i[4], i[5]
+            writer.writerow(row)
 
-write_dhcp_snooping_to_csv('sw1_dhcp_snooping.txt')
+write_dhcp_snooping_to_csv('sw1_dhcp_snooping.txt', 'testim.csv')
